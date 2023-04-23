@@ -1,9 +1,12 @@
-import mongoose from 'mongoose'
+import mongoose, { Types } from 'mongoose'
 
 const Schema = mongoose.Schema
 
 const votesSchema = new Schema({
-    
+    voteType: String,
+    userId: { type: Schema.Types.ObjectId, ref: "Profile"}
+}, {
+  timestamps: true
 })
 
 const grenadeSchema = new Schema({
