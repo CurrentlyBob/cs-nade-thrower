@@ -12,7 +12,7 @@ const votesSchema = new Schema({
 const grenadeSchema = new Schema({
   mapName: String,
   location: String,
-  creator: { type: Schema.Types.ObjectId, ref: 'Profile'},
+  creator: { type: Schema.Types.ObjectId, ref: 'Profile' },
   gifLink: String,
   mapType: String,
   tickRate: Number,
