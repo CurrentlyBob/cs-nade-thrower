@@ -14,6 +14,9 @@ router.post('/', isLoggedIn, nadeThrowCtrl.create)
 ///PATCH
 router.patch('/:nadeThrowId/flip-jump-throw', isLoggedIn, nadeThrowCtrl.flipJumpThrow)
 
+///PUT
+router.put('/:nadeThrowId', isLoggedIn, nadeThrowCtrl.update)
+
 
 export {
   router

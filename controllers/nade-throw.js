@@ -72,10 +72,30 @@ function edit(req, res) {
     })
 }
 
+function update(req, res) {
+    NadeThrow.findById(req.params.nadeThrowId)
+    .then(nadeThrow => {
+        if(nadeThrow.creator.equals(req.user.profile._id)) {
+            req.body.jumpThrow = !!req.body.jumpThrow
+            nadeThrow.updateOne(req.body)
+            .then(()=> {
+                res.redirect(`/nade-throws/${nadeThrow._id}`)
+            })
+        } else {
+            throw new error('Not authorized')
+        }
+    })
+    .catch(err => {
+        console.log(err)
+        res.redirect('/nade-throws')
+    })
+}
+
 export {
     index,
     create,
     show,
     flipJumpThrow,
     edit,
+    update,
 }   
