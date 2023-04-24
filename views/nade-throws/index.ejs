@@ -1,0 +1,39 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<section>
+<h1>Nade Throws! 💣💣💣</h1>
+<% if (user ) { %>
+  <h2>Add Nade Throw</h2>
+  <form action="/nade-throws" method="post">
+    <label>
+      Jump Throw?
+      <input type="checkbox" name="jumpThrow">
+    </label>
+    <label for="map">
+      Map:
+      </label>
+      <select name="map" id="map-select">
+        <option value="Anubis">Anubis</option>
+        <option value="Cache">Cache</option>
+        <option value="Cobblestone">cobblestone</option>
+        <option value="Dust II">Dust II</option>
+        <option value="Inferno">Inferno</option>
+        <option value="Mirage">Mirage</option>
+        <option value="Nuke">Nuke</option>
+        <option value="Overpass">Overpass</option>
+        <option value="Train">Train</option>
+        <option value="Vertigo">Vertigo</option>
+      </select>
+    <button type="submit">Add 💣</button>
+  </form>
+  <% } %>
+<h2>All the Nade Throws:</h2>
+<ul>
+  <% nadeThrows.forEach(nadeThrow => { %>
+    <li>
+      <%= nadeThrow.jumpThrow ? 'Jump Throw' : 'Standard Throw' %> 💣 on <a href="/nade-throws/<%= nadeThrow._id %>"><%= nadeThrow.map %></a></li>
+  <% }); %>
+</ul>
+</section>
+<%- include('../partials/footer') %>
