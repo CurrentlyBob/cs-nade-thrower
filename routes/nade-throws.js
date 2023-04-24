@@ -7,7 +7,7 @@ const router = Router()
 ///GET
 router.get('/',   nadeThrowCtrl.index)
 router.get('/:nadeThrowId', nadeThrowCtrl.show)
-
+router.get('/:nadeThrowId/edit', isLoggedIn, nadeThrowCtrl.edit)
 ///POST
 router.post('/', isLoggedIn, nadeThrowCtrl.create)
 

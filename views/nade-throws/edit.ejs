@@ -1,0 +1,27 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<section>
+    <h1>Edit this Nade Throw💣💣💣</h1>
+    <form action="/nade-throws/<%= nadeThrow._id %>?_method=put" method="post">
+        <select name="map" id="map-select">
+            <option value="Anubis">Anubis</option>
+            <option value="Cache">Cache</option>
+            <option value="Cobblestone">cobblestone</option>
+            <option value="Dust II">Dust II</option>
+            <option value="Inferno">Inferno</option>
+            <option value="Mirage">Mirage</option>
+            <option value="Nuke">Nuke</option>
+            <option value="Overpass">Overpass</option>
+            <option value="Train">Train</option>
+            <option value="Vertigo">Vertigo</option>
+          </select>
+        <label >
+            Jump Throw? 
+            <input type="checkbox" name="jumpThrow" <%= nadeThrow.jumpThrow ? 'checked' : '' %>>
+        </label>
+        <button type="submit">Edit the 💣💣💣</button>
+    </form>
+</section>
+
+<%- include('../partials/footer') %>

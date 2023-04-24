@@ -58,9 +58,24 @@ function flipJumpThrow(req, res) {
     })
 }
 
+function edit(req, res) {
+    NadeThrow.findById(req.params.nadeThrowId)
+    .then(nadeThrow => {
+        res.render('nade-throws/edit', {
+            nadeThrow,
+            title: "edit nade 💣"
+        })
+    })
+    .catch(err => {
+        console.log(err)
+        res.redirect('/nade-throws')
+    })
+}
+
 export {
     index,
     create,
     show,
     flipJumpThrow,
+    edit,
 }   
