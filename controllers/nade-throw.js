@@ -82,7 +82,25 @@ function update(req, res) {
                 res.redirect(`/nade-throws/${nadeThrow._id}`)
             })
         } else {
-            throw new error('Not authorized')
+            throw new Error('Not authorized')
+        }
+    })
+    .catch(err => {
+        console.log(err)
+        res.redirect('/nade-throws')
+    })
+}
+
+function deleteNadeThrow(req, res) {
+    NadeThrow.findById(req.params.nadeThrowId)
+    .then(nadeThrow => {
+        if (nadeThrow.creator.equals(req.user.profile._id)) {
+            nadeThrow.deleteOne()
+            .then(() => {
+                res.redirect('/nade-throws')
+            })
+        } else {
+            throw new Error ('Not Authorized')
         }
     })
     .catch(err => {
@@ -98,4 +116,5 @@ export {
     flipJumpThrow,
     edit,
     update,
+    deleteNadeThrow as delete,
 }   
