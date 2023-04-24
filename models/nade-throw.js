@@ -4,12 +4,12 @@ const Schema = mongoose.Schema
 
 
 const nadeThrowSchema = new Schema({
-  map: String,
+  map: { type: String, required: true, },
   location: String,
   gifLink: String,
   mapType: String,
   tickRate: Number,
-  jumpThrow: Boolean,
+  jumpThrow: { type: Boolean, required: true, },
   //comments: [commentSchema], 
   creator: { type: Schema.Types.ObjectId, ref: 'Profile' },
 }, {
