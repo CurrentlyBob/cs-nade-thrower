@@ -109,6 +109,26 @@ function deleteNadeThrow(req, res) {
     })
 }
 
+function addComment(req, res) {
+    NadeThrow.findById(req.params.nadeThrowId)
+    .then(nadeThrow => {
+        req.body.author = req.user.profile._id
+        nadeThrow.comments.push(req.body)
+        nadeThrow.save()
+        .then(() => {
+            res.redirect(`/nade-throws/${nadeThrow._id}`)
+        })
+        .catch(err => {
+            console.log(err)
+            res.redirect('/nade-throws')
+        })
+    })
+    .catch(err => {
+        console.log(err)
+        res.redirect('/nade-throws')
+    })
+}
+
 export {
     index,
     create,
@@ -117,4 +137,5 @@ export {
     edit,
     update,
     deleteNadeThrow as delete,
+    addComment,
 }   

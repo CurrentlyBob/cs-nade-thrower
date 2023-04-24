@@ -10,6 +10,7 @@ router.get('/:nadeThrowId', nadeThrowCtrl.show)
 router.get('/:nadeThrowId/edit', isLoggedIn, nadeThrowCtrl.edit)
 ///POST
 router.post('/', isLoggedIn, nadeThrowCtrl.create)
+router.post(':/nadeThrowId/comments', isLoggedIn, nadeThrowCtrl.addComment)
 
 ///PATCH
 router.patch('/:nadeThrowId/flip-jump-throw', isLoggedIn, nadeThrowCtrl.flipJumpThrow)

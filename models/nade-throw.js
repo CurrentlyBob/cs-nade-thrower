@@ -1,7 +1,11 @@
-import mongoose, { Types } from 'mongoose'
+import mongoose from 'mongoose'
 
 const Schema = mongoose.Schema
 
+const commentSchema = new Schema({
+  content: String,
+  author: { type: Schema.Types.ObjectId, ref: "Profile"},
+})
 
 const nadeThrowSchema = new Schema({
   map: { type: String, required: true, },
@@ -9,9 +13,9 @@ const nadeThrowSchema = new Schema({
   gifLink: String,
   mapType: String,
   tickRate: Number,
-  jumpThrow: { type: Boolean, required: true, },
-  //comments: [commentSchema], 
+  jumpThrow: Boolean,
   creator: { type: Schema.Types.ObjectId, ref: 'Profile' },
+  comments: [commentSchema], 
 }, {
   timestamps: true
 })
