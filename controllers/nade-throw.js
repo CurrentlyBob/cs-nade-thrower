@@ -30,7 +30,10 @@ function create(req, res) {
 
 function show(req, res) {
     NadeThrow.findById(req.params.nadeThrowId)
-    .populate("creator")
+    .populate([
+        {path: "creator"},
+        {path: "comments.author"}
+    ])
     .then(nadeThrow => {
         res.render('nade-throws/show', {
         nadeThrow,
@@ -129,6 +132,26 @@ function addComment(req, res) {
     })
 }
 
+function editComment(req, res) {
+    NadeThrow.findById(req.params.nadeThrowId)
+    .then(nadeThrow => {
+        const comment = nadeThrow.comments.id(req.params.commentId)
+        if(comment.author.equals(req.user.profile._id)) {
+            res.render('nadeThrows/editComment', {
+                nadeThrow,
+                comment,
+                title: 'Update Comment'
+            })
+        } else {
+            throw new Error('Not Authorized')
+        }
+    })
+    .catch(err => {
+        console.log(err)
+        res.redirect('/nade-throws')
+    })
+}
+
 export {
     index,
     create,
@@ -138,4 +161,5 @@ export {
     update,
     deleteNadeThrow as delete,
     addComment,
+    editComment,
 }   

@@ -8,9 +8,11 @@ const router = Router()
 router.get('/',   nadeThrowCtrl.index)
 router.get('/:nadeThrowId', nadeThrowCtrl.show)
 router.get('/:nadeThrowId/edit', isLoggedIn, nadeThrowCtrl.edit)
+router.get('/:nadeThrowId', nadeThrowCtrl.show)
+router.get('/:nadeThrowId/comments/:commentsId/edit', isLoggedIn, nadeThrowCtrl.editComment)
 ///POST
 router.post('/', isLoggedIn, nadeThrowCtrl.create)
-router.post(':/nadeThrowId/comments', isLoggedIn, nadeThrowCtrl.addComment)
+router.post('/:nadeThrowId/comments', isLoggedIn, nadeThrowCtrl.addComment)
 
 ///PATCH
 router.patch('/:nadeThrowId/flip-jump-throw', isLoggedIn, nadeThrowCtrl.flipJumpThrow)
