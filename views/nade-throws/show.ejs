@@ -3,6 +3,9 @@
 
 <section>
     <p>Nade Throw Posted By <%= nadeThrow.creator.name %></p>
+    <img src="<%= nadeThrow.creator.avatar %>" alt="<%= nadeThrow.creator.name %>'s avatar">
+    <h1><%= nadeThrow.map %> Nade Throw💣💣💣</h1>
+    <h2>This nade throw is a <%= nadeThrow.jumpThrow ? 'Jump Throw' : 'Standard Throw' %></h2>
 </section>
 
 <%- include('../partials/footer') %>

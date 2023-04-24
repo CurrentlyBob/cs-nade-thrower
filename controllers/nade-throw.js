@@ -26,18 +26,20 @@ function create(req, res) {
         console.log(err)
         res.redirect('/nade-throws')
     })
-    console.log(req.body)
 }
 
 function show(req, res) {
-    NadeThrow.find(req.params.nadeThrowId)
+    NadeThrow.findById(req.params.nadeThrowId)
     .populate("creator")
     .then(nadeThrow => {
-        res.render('nade-throws/show')
+        res.render('nade-throws/show', {
+        nadeThrow,
+        title: "💣 show"
+        })
     })
     .catch(err => {
         console.log(err)
-        res.redirect('/nade-throws')
+        res.redirect('/')
     })
 }
 
