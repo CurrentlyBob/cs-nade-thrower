@@ -193,3 +193,13 @@ nav {
 .nav-links a:hover {
   color: var(--accent-color);
 }
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand .title {
+  margin-left: 10px;
+}
+

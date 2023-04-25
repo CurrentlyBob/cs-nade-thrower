@@ -1,37 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Website</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  <link rel="stylesheet" href="/stylesheets/main.css">
-</head>
-<body>
-  <nav class="navbar">
-    <div class="navbar-brand">
-      <a href="/" class="navbar-item">
-        <h1 class="title">My Website</h1>
-      </a>
-      <button class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </button>
-    </div>
-    <div class="navbar-menu" id="navbarMenu">
-      <div class="navbar-end">
-        <a href="/nade-throws" class="navbar-item"><i class="fas fa-bomb"></i> Nade Throws</a>
-        <a href="/profiles" class="navbar-item"><i class="fas fa-user"></i> Profiles</a>
-        <% if (user) { %>
-          <a href="/auth/logout" class="navbar-item"><i class="fas fa-sign-out-alt"></i> Logout</a>
-        <% } else { %>
-          <div id="googleSignInButton"></div>
-        <% } %>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <script defer src="https://accounts.google.com/gsi/client"></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <a href="/" class="navbar-item">
+          <h1 class="title">My Website</h1>
+        </a>
+        <button class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
       </div>
-    </div>
-  </nav>
-  <script defer src="https://accounts.google.com/gsi/client"></script>
-  <script defer src="/scripts/main.js"></script>
-</body>
+      <div class="navbar-menu" id="navbarMenu">
+        <div class="navbar-end">
+          <a href="/nade-throws" class="navbar-item"><i class="fas fa-bomb"></i> Nade Throws</a>
+          <a href="/profiles" class="navbar-item"><i class="fas fa-user"></i> Profiles</a>
+          <% if (user) { %>
+            <a href="/auth/logout" class="navbar-item"><i class="fas fa-sign-out-alt"></i> Logout</a>
+          <% } else { %>
+            <div
+              id="g_id_onload"
+              data-client_id="<%= googleClientID %>"
+              data-login_uri="/auth/google"
+              data-auto_prompt="false"
+            ></div>
+            <div
+              class="g_id_signin"
+              data-type="standard"
+              data-size="large"
+              data-theme="filled_black"
+              data-text="sign_in_with"
+              data-shape="rectangular"
+              data-logo_alignment="left"
+            ></div>
+          <% } %>
+        </div>
+      </div>
+    </nav>
+    <script defer src="/scripts/main.js"></script>
+  </body>
 </html>
