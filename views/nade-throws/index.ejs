@@ -1,19 +1,22 @@
-<%- include('../partials/html-head') %>
-<%- include('../partials/nav') %>
+<%- include('../partials/html-head') %> <%- include('../partials/nav') %>
 
-<section>
-<h1>Nade Throws! 💣💣💣</h1>
-<% if (user ) { %>
+<section class="container mt-5">
+  <h1>Nade Throws! 💣💣💣</h1>
+  <% if (user ) { %>
   <h2>Add Nade Throw</h2>
   <form action="/nade-throws" method="post">
-    <label>
-      Jump Throw?
-      <input type="checkbox" name="jumpThrow">
-    </label>
-    <label for="map">
-      Map:
-      </label>
-      <select name="map" id="map-select">
+    <div class="form-group form-check">
+      <input
+        type="checkbox"
+        name="jumpThrow"
+        class="form-check-input"
+        id="jumpThrow"
+      />
+      <label class="form-check-label" for="jumpThrow"> Jump Throw? </label>
+    </div>
+    <div class="form-group">
+      <label for="map"> Map: </label>
+      <select name="map" id="map-select" class="form-control">
         <option value="Anubis">Anubis</option>
         <option value="Cache">Cache</option>
         <option value="Cobblestone">cobblestone</option>
@@ -25,15 +28,18 @@
         <option value="Train">Train</option>
         <option value="Vertigo">Vertigo</option>
       </select>
-    <button type="submit">Add 💣</button>
+    </div>
+    <button type="submit" class="btn btn-primary">Add 💣</button>
   </form>
   <% } %>
-<h2>All the Nade Throws:</h2>
-<ul>
-  <% nadeThrows.forEach(nadeThrow => { %>
+  <h2>All the Nade Throws:</h2>
+  <ul class="list-unstyled">
+    <% nadeThrows.forEach(nadeThrow => { %>
     <li>
-      <%= nadeThrow.jumpThrow ? 'Jump Throw' : 'Standard Throw' %> 💣 on <a href="/nade-throws/<%= nadeThrow._id %>"><%= nadeThrow.map %></a></li>
-  <% }); %>
-</ul>
+      <%= nadeThrow.jumpThrow ? 'Jump Throw' : 'Standard Throw' %> 💣 on
+      <a href="/nade-throws/<%= nadeThrow._id %>"><%= nadeThrow.map %></a>
+    </li>
+    <% }); %>
+  </ul>
 </section>
 <%- include('../partials/footer') %>

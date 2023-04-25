@@ -1,23 +1,24 @@
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
 
-<section>
+<section class="container mt-5">
     <h1>Edit your comment!</h1>
     <form 
       action="/nade-throws/<%= nadeThrow._id %>/comments/<%= comment._id %>?_method=PUT"
       method="POST"
     >
-      <label>
-        Content: 
+      <div class="form-group">
+        <label for="content">Content:</label>
         <textarea
           cols="30"
-          rows="2" 
-          type="text"
-          name="content" 
+          rows="2"
+          id="content"
+          name="content"
+          class="form-control"
           autocomplete="off"
         ><%= comment.content %></textarea>
-      </label>
-      <button type="submit">Update Comment</button>
+      </div>
+      <button type="submit" class="btn btn-primary">Update Comment</button>
     </form>
   </section>
   

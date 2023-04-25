@@ -1,49 +1,56 @@
-<%- include('../partials/html-head') %> <%- include('../partials/nav') %>
+<%- include('../partials/html-head') %> 
+<%- include('../partials/nav') %>
 
-<section>
-  <p>Nade Throw Posted By <%= nadeThrow.creator.name %></p>
-  <img src="<%= nadeThrow.creator.avatar %>" alt="<%= nadeThrow.creator.name %>'s avatar"/>
-  <h1><%= nadeThrow.map %> Nade Throw💣💣💣</h1>
-  <h2>
-    This nade throw is a <%= nadeThrow.jumpThrow ? 'Jump Throw' : 'Standard Throw' %>
-  </h2>
-  <% if(user) { %>
-  <form action="/nade-throws/<%= nadeThrow._id %>/flip-jump-throw?_method=PATCH" method="post">
-    <button class="btn" type="submit">
-      Apply <%= nadeThrow.jumpThrow ? 'standard throw' : 'jump throw' %>?
-    </button>
-  </form>
-  <% } %> <% if (nadeThrow.creator.equals(user?.profile._id)) { %>
-  <a href="/nade-throws/<%= nadeThrow._id %>/edit">
-    <button class="btn">Edit this Nade Throw</button>
-  </a>
-  <form action="/nade-throws/<%= nadeThrow._id %>?_method=DELETE" method="POST">
-    <button class="btn" type="submit">Delete this Nade Throw ☠️☠️</button>
-  </form>
-  <% } %>
-  <h2>Comments</h2>
-  <% if (user) { %>
-  <h3>Add a Comment</h3>
-  <ul>
-    <% nadeThrow.comments?.forEach(comment => { %>
-      <li>
-        <%= comment.content %> - <%= comment.author.name %>
-        <% if (comment.author.equals(user?.profile._id)) { %>
-          <form action="/nade-throws/<%= nadeThrow._id %>/comments/<%= comment._id %>?_method=DELETE" method="post" class="inline">
-              <button class="btn" type="submit">Delete Comment</button>
-          </form>
-            <a href="/nade-throws/<%= nadeThrow._id %>/comments/<%= comment._id  %>/edit">
-            <button class="btn">Edit Comment</button>
-            </a>
+<section class="container mt-5">
+  <div class="row">
+    <div class="col-12">
+      <p>Nade Throw Posted By <%= nadeThrow.creator.name %></p>
+      <img src="<%= nadeThrow.creator.avatar %>" alt="<%= nadeThrow.creator.name %>'s avatar" class="img-thumbnail"/>
+      <h1><%= nadeThrow.map %> Nade Throw💣💣💣</h1>
+      <h2>
+        This nade throw is a <%= nadeThrow.jumpThrow ? 'Jump Throw' : 'Standard Throw' %>
+      </h2>
+      <% if(user) { %>
+      <form action="/nade-throws/<%= nadeThrow._id %>/flip-jump-throw?_method=PATCH" method="post">
+        <button class="btn btn-primary" type="submit">
+          Apply <%= nadeThrow.jumpThrow ? 'standard throw' : 'jump throw' %>?
+        </button>
+      </form>
+      <% } %> <% if (nadeThrow.creator.equals(user?.profile._id)) { %>
+      <a href="/nade-throws/<%= nadeThrow._id %>/edit">
+        <button class="btn btn-warning">Edit this Nade Throw</button>
+      </a>
+      <form action="/nade-throws/<%= nadeThrow._id %>?_method=DELETE" method="POST">
+        <button class="btn btn-danger" type="submit">Delete this Nade Throw ☠️☠️</button>
+      </form>
+      <% } %>
+      <h2>Comments</h2>
+      <% if (user) { %>
+      <h3>Add a Comment</h3>
+      <ul class="list-unstyled">
+        <% nadeThrow.comments?.forEach(comment => { %>
+          <li>
+            <%= comment.content %> - <%= comment.author.name %>
+            <% if (comment.author.equals(user?.profile._id)) { %>
+              <form action="/nade-throws/<%= nadeThrow._id %>/comments/<%= comment._id %>?_method=DELETE" method="post" class="d-inline">
+                <button class="btn btn-sm btn-danger" type="submit">Delete Comment</button>
+              </form>
+              <a href="/nade-throws/<%= nadeThrow._id %>/comments/<%= comment._id  %>/edit">
+                <button class="btn btn-sm btn-warning">Edit Comment</button>
+              </a>
             <% } %>
-      </li> 
-    <% }) %>
-  </ul>
-  <form action="/nade-throws/<%= nadeThrow._id %>/Comments" method="POST">
-    <textarea name="content"></textarea><br />
-    <button>Add Comment</button>
-  </form>
-  <% } %>
+          </li> 
+        <% }) %>
+      </ul>
+      <form action="/nade-throws/<%= nadeThrow._id %>/Comments" method="POST">
+        <div class="form-group">
+          <textarea name="content" class="form-control"></textarea>
+        </div>
+        <button class="btn btn-success">Add Comment</button>
+      </form>
+      <% } %>
+    </div>
+  </div>
 </section>
 
 <%- include('../partials/footer') %>
