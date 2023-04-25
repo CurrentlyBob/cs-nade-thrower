@@ -19,7 +19,7 @@ router.patch('/:nadeThrowId/flip-jump-throw', isLoggedIn, nadeThrowCtrl.flipJump
 
 ///PUT
 router.put('/:nadeThrowId', isLoggedIn, nadeThrowCtrl.update)
-
+router.put('/:nadeThrowId/comments/:commentId', isLoggedIn, )
 ///DELETE
 router.delete('/:nadeThrowId', isLoggedIn, nadeThrowCtrl.delete)
 
