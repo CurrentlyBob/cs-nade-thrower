@@ -1,9 +1,9 @@
-/* Set box-sizing to border-box for all elements */
+
 * {
   box-sizing: border-box;
 }
 
-/* Use variables for common colors */
+
 :root {
   --primary-color: #1a1a1a;
   --secondary-color: #f6f6f6;
@@ -12,7 +12,7 @@
   --text-color: #333333;
 }
 
-/* Set default font properties */
+
 body {
   font-family: system-ui, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell,
     "Helvetica Neue", sans-serif;
@@ -23,7 +23,7 @@ body {
   background-color: var(--background-color);
 }
 
-/* Style navigation bar */
+
 nav {
   background-color: var(--secondary-color);
   color: var(--primary-color);
@@ -49,7 +49,7 @@ nav > a:hover {
   color: var(--accent-color);
 }
 
-/* Style main content section */
+
 main {
   display: flex;
   flex-direction: column;
@@ -115,7 +115,7 @@ a {
   color: var(--accent-color);
 }
 
-/* Style buttons */
+
 .btn {
   margin: 1rem 0;
   padding: 0.8rem 1.5rem;
@@ -133,7 +133,7 @@ a {
 .btn:hover {
   background-color: darken(var(--accent-color), 10%);
 }
-/* Apply a reset */
+
 *,
 *::before,
 *::after {
@@ -142,14 +142,14 @@ a {
   padding: 0;
 }
 
-/* Use variables to define colors */
+
 :root {
   --primary-color: #2d3436;
   --secondary-color: #dfe6e9;
   --accent-color: #00cec9;
 }
 
-/* Use a modern font stack */
+
 body {
   font-family: 'Roboto', sans-serif;
 }
@@ -162,7 +162,7 @@ nav {
   padding: 1rem;
 }
 
-/* Style the logo */
+
 .logo {
   font-size: 1.5rem;
   font-weight: 700;
@@ -170,7 +170,7 @@ nav {
   text-transform: uppercase;
 }
 
-/* Style the navigation links */
+
 .nav-links {
   display: flex;
   justify-content: center;
