@@ -176,6 +176,29 @@ function updateComment(req, res) {
         res.redirect('/nade-throws')
     })
 }
+function deleteComment(req, res) {
+    NadeThrow.findById(req.params.nadeThrowId)
+    .then(nadeThrow => {
+        const comment = nadeThrow.comments.id(req.params.commentId)
+        if(comment.author.equals(req.user.profile._id)) {
+            nadeThrow.comments.remove(comment)
+            nadeThrow.save()
+            .then(() => {
+                res.redirect(`/nade-throws/${nadeThrow._id}`)
+            })
+            .catch(err => {
+                console.log(err)
+                res.redirect('/nade-throws')
+            })
+        } else {
+            throw new Error('Not Authorized')
+        }
+    })
+    .catch(err => {
+        console.log(err)
+        res.redirect('/nade-throws')
+    })
+}
 
 export {
     index,
@@ -188,4 +211,5 @@ export {
     addComment,
     editComment,
     updateComment,
+    deleteComment,
 }   
