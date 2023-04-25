@@ -122,22 +122,23 @@ function addComment(req, res) {
             res.redirect(`/nade-throws/${nadeThrow._id}`)
         })
         .catch(err => {
-            console.log(err)
+            console.error(err)
             res.redirect('/nade-throws')
         })
     })
     .catch(err => {
-        console.log(err)
+        console.error(err)
         res.redirect('/nade-throws')
     })
 }
 
 function editComment(req, res) {
+    
     NadeThrow.findById(req.params.nadeThrowId)
     .then(nadeThrow => {
         const comment = nadeThrow.comments.id(req.params.commentId)
-        if(comment.author.equals(req.user.profile._id)) {
-            res.render('nadeThrows/editComment', {
+        if (comment.author.equals(req.user.profile._id)) {
+            res.render('nade-throws/editComment', {
                 nadeThrow,
                 comment,
                 title: 'Update Comment'
@@ -147,7 +148,7 @@ function editComment(req, res) {
         }
     })
     .catch(err => {
-        console.log(err)
+        console.error(err)
         res.redirect('/nade-throws')
     })
 }

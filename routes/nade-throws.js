@@ -9,7 +9,7 @@ router.get('/',   nadeThrowCtrl.index)
 router.get('/:nadeThrowId', nadeThrowCtrl.show)
 router.get('/:nadeThrowId/edit', isLoggedIn, nadeThrowCtrl.edit)
 router.get('/:nadeThrowId', nadeThrowCtrl.show)
-router.get('/:nadeThrowId/comments/:commentsId/edit', isLoggedIn, nadeThrowCtrl.editComment)
+router.get('/:nadeThrowId/comments/:commentId/edit', isLoggedIn, nadeThrowCtrl.editComment)
 ///POST
 router.post('/', isLoggedIn, nadeThrowCtrl.create)
 router.post('/:nadeThrowId/comments', isLoggedIn, nadeThrowCtrl.addComment)
