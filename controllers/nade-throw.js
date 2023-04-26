@@ -17,6 +17,7 @@ NadeThrow.find({})
 function create(req, res) {
     req.body.creator = req.user.profile._id
     req.body.jumpThrow = !!req.body.jumpThrow
+    console.log(req.body)
     NadeThrow.create(req.body)
     .then(nadeThrow => {
         res.redirect('/nade-throws')

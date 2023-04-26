@@ -29,15 +29,50 @@
         <option value="Vertigo">Vertigo</option>
       </select>
     </div>
+    <label for="gif-link">GIF Link:</label>
+    <input
+      type="text"
+      id="gif-link"
+      name="gifLink"
+      placeholder="Paste Gif Link Here"
+    />
+    
     <button type="submit" class="btn btn-primary">Add 💣</button>
   </form>
   <% } %>
   <h2>All the Nade Throws:</h2>
-  <ul class="list-unstyled">
+  <ul class="list-unstyled row">
     <% nadeThrows.forEach(nadeThrow => { %>
-    <li>
-      <%= nadeThrow.jumpThrow ? 'Jump Throw' : 'Standard Throw' %> 💣 on
-      <a href="/nade-throws/<%= nadeThrow._id %>"><%= nadeThrow.map %></a>
+    <li class="col-md-6 my-3">
+      <div class="card border-secondary h-100">
+        <div class="card-body">
+          <h5 class="card-title"><%= nadeThrow.map %></h5>
+          <p class="card-text">
+            <%= nadeThrow.jumpThrow ? 'Jump Throw' : 'Standard Throw' %> 💣 on
+          </p>
+          <div
+            class="ratio ratio-16x9 mb-3"
+            style="position: relative; overflow: hidden; background-color: #333"
+          >
+            <iframe
+              src="<%= nadeThrow.gifLink %>"
+              controls
+              style="
+                transform: translate(-50%, -50%);
+                width: 100%;
+                height: auto;
+              "
+            >
+              Your browser does not support the video tag.
+        </iframe>
+          </div>
+          <a
+            href="/nade-throws/<%= nadeThrow._id %>"
+            class="btn btn-outline-secondary"
+            >View Details</a
+          >
+        </div>
+      </div>
     </li>
     <% }); %>
   </ul>
