@@ -36,17 +36,17 @@
       name="gifLink"
       placeholder="Paste Gif Link Here"
     />
-    <label for="map-location">Map Location:</label>
-    <input type="text" name="map-location" id="location" placeholder="Map Callout Here">
+    <label for="location">Map Location:</label>
+    <input type="text" name="location" id="location" placeholder="Map Callout Here">
     <label for="grenade-types">Grenade Type:</label>
-    <select name="grenade-types" id="grenade-types">
+    <select name="grenadeType" id="grenade-types">
       <option value="Smoke Grenade">Smoke Grenade</option>
       <option value="Frag Grenade">Frag Grenade</option>
       <option value="Flash Grenade">Flash Grenade</option>
       <option value="Molotov/Incendiary Grenade">Molotov/Incendiary Grenade</option>
     </select>
     <label for="tick-rate-select">Tick Rate:</label>
-    <select name="tick-rate-select" id="tick-rate-select">
+    <select name="tickRate" id="tick-rate-select">
       <option value="64">64</option>
       <option value="128">128</option>
     </select>
@@ -56,6 +56,7 @@
   <h2>All the Nade Throws:</h2>
   <ul class="list-unstyled row">
     <% nadeThrows.forEach(nadeThrow => { %>
+      <% console.log(nadeThrow) %>
     <li class="col-md-6 my-3">
       <div class="card border-secondary h-100">
         <div class="card-body">
@@ -63,9 +64,9 @@
           <p class="card-text">
             <%= nadeThrow.jumpThrow ? 'Jump Throw' : 'Standard Throw' %> 💣
           </p>
-          <p class="card-text"><%= nadeThrow.location %></p>
-          <p class="card-text"><%= nadeThrow.grenadeType %></p>
-          <p class="card-text"><%= nadeThrow.tickRate %></p>
+          <p class="card-text">Map Location: <%= nadeThrow.location %></p>
+          <p class="card-text">Grenade Type: <%= nadeThrow.grenadeType %></p>
+          <p class="card-text">Server Tick Rate: <%= nadeThrow.tickRate %></p>
           <div
             class="ratio ratio-16x9 mb-3"
             style="position: relative; overflow: hidden; background-color: #333"
