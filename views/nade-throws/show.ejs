@@ -10,6 +10,9 @@
       <h2>
         This nade throw is a <%= nadeThrow.jumpThrow ? 'Jump Throw' : 'Standard Throw' %>
       </h2>
+      <h3 class="card-text">Map Location: <%= nadeThrow.location %></h3>
+          <h3 class="card-text">Grenade Type: <%= nadeThrow.grenadeType %></h3>
+          <h3 class="card-text">Server Tick Rate: <%= nadeThrow.tickRate %></h3>
       <% if(user) { %>
       <form action="/nade-throws/<%= nadeThrow._id %>/flip-jump-throw?_method=PATCH" method="post">
         <button class="btn btn-primary" type="submit">
