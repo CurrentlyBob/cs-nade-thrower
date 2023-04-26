@@ -21,11 +21,6 @@
           height: 300px; " / >
         </div>
       <% if(user) { %>
-      <form action="/nade-throws/<%= nadeThrow._id %>/flip-jump-throw?_method=PATCH" method="post">
-        <button class="btn btn-primary" type="submit">
-          Apply <%= nadeThrow.jumpThrow ? 'standard throw' : 'jump throw' %>?
-        </button>
-      </form>
       <% } %> <% if (nadeThrow.creator.equals(user?.profile._id)) { %>
       <a href="/nade-throws/<%= nadeThrow._id %>/edit">
         <button class="btn btn-warning">Edit this Nade Throw</button>

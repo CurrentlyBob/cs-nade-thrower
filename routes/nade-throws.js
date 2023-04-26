@@ -14,9 +14,6 @@ router.get('/:nadeThrowId/comments/:commentId/edit', isLoggedIn, nadeThrowCtrl.e
 router.post('/', isLoggedIn, nadeThrowCtrl.create)
 router.post('/:nadeThrowId/comments', isLoggedIn, nadeThrowCtrl.addComment)
 
-///PATCH
-router.patch('/:nadeThrowId/flip-jump-throw', isLoggedIn, nadeThrowCtrl.flipJumpThrow)
-
 ///PUT
 router.put('/:nadeThrowId', isLoggedIn, nadeThrowCtrl.update)
 router.put('/:nadeThrowId/comments/:commentId', isLoggedIn, nadeThrowCtrl.updateComment)

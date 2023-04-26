@@ -46,21 +46,6 @@ function show(req, res) {
     })
 }
 
-function flipJumpThrow(req, res) {
-    NadeThrow.findById(req.params.nadeThrowId)
-    .then(nadeThrow => {
-        nadeThrow.jumpThrow = !nadeThrow.jumpThrow
-        nadeThrow.save()
-        .then(()=> {
-            res.redirect(`/nade-throws/${nadeThrow._id}`)
-        })
-    })
-    .catch(err => {
-        console.log(err)
-        res.redirect('nade-throws')
-    })
-}
-
 function edit(req, res) {
     NadeThrow.findById(req.params.nadeThrowId)
     .then(nadeThrow => {
@@ -205,7 +190,6 @@ export {
     index,
     create,
     show,
-    flipJumpThrow,
     edit,
     update,
     deleteNadeThrow as delete,
