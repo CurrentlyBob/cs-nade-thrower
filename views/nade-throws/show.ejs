@@ -13,6 +13,13 @@
       <h3 class="card-text">Map Location: <%= nadeThrow.location %></h3>
           <h3 class="card-text">Grenade Type: <%= nadeThrow.grenadeType %></h3>
           <h3 class="card-text">Server Tick Rate: <%= nadeThrow.tickRate %></h3>
+          <div
+          class="ratio ratio-16x9 mb-3"
+          style="position: relative; overflow: hidden;"
+        >
+          <video src="<%= nadeThrow.gifLink %>" controls style=" width: auto;
+          height: 300px; " / >
+        </div>
       <% if(user) { %>
       <form action="/nade-throws/<%= nadeThrow._id %>/flip-jump-throw?_method=PATCH" method="post">
         <button class="btn btn-primary" type="submit">
