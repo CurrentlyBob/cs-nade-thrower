@@ -14,7 +14,6 @@ NadeThrow.find({})
     })
 }
 
-
 function create(req, res) {
     req.body.creator = req.user.profile._id
     req.body.jumpThrow = !!req.body.jumpThrow
@@ -176,6 +175,7 @@ function updateComment(req, res) {
         res.redirect('/nade-throws')
     })
 }
+
 function deleteComment(req, res) {
     NadeThrow.findById(req.params.nadeThrowId)
     .then(nadeThrow => {

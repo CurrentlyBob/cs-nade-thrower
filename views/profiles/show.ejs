@@ -1,0 +1,13 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<main>
+    <div id="container mt-5">
+        <img src="<%= profile.avatar %>" alt="<%= profile.name %>'s photo">
+        <h4><%= profile.name %></h4>
+    </div>
+    <h1>yooooo <%= isUser ? "you" : profile.name %>!</h1>
+    <p>Member since: <%= profile.createdAt %></p>
+</main>
+
+<%- include('../partials/footer') %>
