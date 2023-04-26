@@ -36,7 +36,20 @@
       name="gifLink"
       placeholder="Paste Gif Link Here"
     />
-    
+    <label for="map-location">Map Location:</label>
+    <input type="text" name="map-location" id="location" placeholder="Map Callout Here">
+    <label for="grenade-types">Grenade Type:</label>
+    <select name="grenade-types" id="grenade-types">
+      <option value="Smoke Grenade">Smoke Grenade</option>
+      <option value="Frag Grenade">Frag Grenade</option>
+      <option value="Flash Grenade">Flash Grenade</option>
+      <option value="Molotov/Incendiary Grenade">Molotov/Incendiary Grenade</option>
+    </select>
+    <label for="tick-rate-select">Tick Rate:</label>
+    <select name="tick-rate-select" id="tick-rate-select">
+      <option value="64">64</option>
+      <option value="128">128</option>
+    </select>
     <button type="submit" class="btn btn-primary">Add 💣</button>
   </form>
   <% } %>
@@ -48,23 +61,17 @@
         <div class="card-body">
           <h5 class="card-title"><%= nadeThrow.map %></h5>
           <p class="card-text">
-            <%= nadeThrow.jumpThrow ? 'Jump Throw' : 'Standard Throw' %> 💣 on
+            <%= nadeThrow.jumpThrow ? 'Jump Throw' : 'Standard Throw' %> 💣
           </p>
+          <p class="card-text"><%= nadeThrow.location %></p>
+          <p class="card-text"><%= nadeThrow.grenadeType %></p>
+          <p class="card-text"><%= nadeThrow.tickRate %></p>
           <div
             class="ratio ratio-16x9 mb-3"
             style="position: relative; overflow: hidden; background-color: #333"
           >
-            <iframe
-              src="<%= nadeThrow.gifLink %>"
-              controls
-              style="
-                transform: translate(-50%, -50%);
-                width: 100%;
-                height: auto;
-              "
-            >
-              Your browser does not support the video tag.
-        </iframe>
+            <video src="<%= nadeThrow.gifLink %>" controls style=" width: auto;
+            height: 300px; " / >
           </div>
           <a
             href="/nade-throws/<%= nadeThrow._id %>"

@@ -11,9 +11,9 @@ const nadeThrowSchema = new Schema({
   map: { type: String, required: true, },
   location: String,
   gifLink: String,
-  mapType: String,
   tickRate: Number,
   jumpThrow: Boolean,
+  grenadeType: String,
   creator: { type: Schema.Types.ObjectId, ref: 'Profile' },
   comments: [commentSchema], 
 }, {
