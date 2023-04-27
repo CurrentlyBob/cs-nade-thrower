@@ -23,10 +23,10 @@ CS Nade Thrower is an interactive website for CSGO players to share and discover
 
 
 ## Next Steps (Ice Box🧊)
--[ ] Dark Mode Toggle
+- [ ] Dark Mode Toggle
 
--[ ] CSS Polishing 
+- [ ] CSS Polishing 
 
--[ ] Follow Functionality 
+- [ ] Follow Functionality 
 
--[ ] Mobile Friendly
+- [ ] Mobile Friendly
