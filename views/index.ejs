@@ -3,7 +3,7 @@
 <main class="container mt-5">
   <div class="row">
     <div class="col text-center">
-      <h1 class="mb-4">Hello, <%= user ? user.profile.name : "friend" %></h1>
+      <h1 class="mb-4">Hello, <%= user ? user.profile.name : "player." %></h1>
       <% if (user?.profile.avatar) { %>
       <div>
         <img
@@ -12,6 +12,12 @@
           class="img-fluid rounded-circle"
         />
       </div>
+      <% } else { %>
+      <video
+        src="https://thumbs.gfycat.com/UntidyMemorableBangeltiger-mobile.mp4"
+        autoplay
+        style="width: auto; height: auto"
+      ></video>
       <% } %>
     </div>
   </div>
