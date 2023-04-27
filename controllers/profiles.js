@@ -15,11 +15,8 @@ function index(req, res) {
 }
 
 function show(req, res) {
-    console.log(req.params)
     Profile.findById(req.params.profileId)
     .then(profile => {
-        console.log(profile)
-        console.log(req.params.profileId);
         const isUser = profile._id.equals(req.user.profile._id)
         res.render("profiles/show", {
             title: `👤 ${profile.name}'s profile`,

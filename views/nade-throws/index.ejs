@@ -50,13 +50,16 @@
       id="jumpThrow"
     />
     <label class="form-check-label" for="jumpThrow"> Jump Throw? </label>
-    <button type="submit" class="btn btn-primary">Add 💣</button>
+    <div class="row">
+      <div class="">
+      <button type="submit" class="btn btn-primary">Add 💣</button>
+      </div>
+    </div>
   </form>
   <% } %>
   <h2>All the Nade Throws:</h2>
   <ul class="list-unstyled row">
     <% nadeThrows.forEach(nadeThrow => { %>
-      <% console.log(nadeThrow) %>
     <li class="col-md-6 my-3">
       <div class="card border-secondary h-100">
         <div class="card-body">
