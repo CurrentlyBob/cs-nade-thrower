@@ -1,65 +1,10 @@
 <%- include('../partials/html-head') %> <%- include('../partials/nav') %>
 
-<section class="container mt-5">
-  <h1>Nade Throws! 💣💣💣</h1>
-  <% if (user ) { %>
-  <h2>Add Nade Throw</h2>
-  <form action="/nade-throws" method="post">
-  </div>
-  <div class="form-group">
-    <label for="map"> Map: </label>
-    <select name="map" id="map-select" class="form-control">
-      <option value="Anubis">Anubis</option>
-      <option value="Cache">Cache</option>
-      <option value="Cobblestone">cobblestone</option>
-      <option value="Dust II">Dust II</option>
-      <option value="Inferno">Inferno</option>
-      <option value="Mirage">Mirage</option>
-      <option value="Nuke">Nuke</option>
-      <option value="Overpass">Overpass</option>
-      <option value="Train">Train</option>
-      <option value="Vertigo">Vertigo</option>
-    </select>
-  </div>
-  <label for="gif-link">GIF Link:</label>
-  <input
-  type="text"
-  id="gif-link"
-  name="gifLink"
-  placeholder="Paste Gif Link Here"
-  />
-  <label for="location">Map Location:</label>
-  <input type="text" name="location" id="location" placeholder="Map Callout Here">
-  <label for="grenade-types">Grenade Type:</label>
-  <select name="grenadeType" id="grenade-types">
-    <option value="Smoke Grenade">Smoke Grenade</option>
-    <option value="Frag Grenade">Frag Grenade</option>
-    <option value="Flash Grenade">Flash Grenade</option>
-    <option value="Molotov/Incendiary Grenade">Molotov/Incendiary Grenade</option>
-  </select>
-  <label for="tick-rate-select">Tick Rate:</label>
-  <select name="tickRate" id="tick-rate-select">
-    <option value="64">64</option>
-    <option value="128">128</option>
-  </select>
-  <div class="form-group form-check">
-    <input
-      type="checkbox"
-      name="jumpThrow"
-      class="form-check-input"
-      id="jumpThrow"
-    />
-    <label class="form-check-label" for="jumpThrow"> Jump Throw? </label>
-    <div class="row">
-      <div class="">
-      <button type="submit" class="btn btn-primary">Add 💣</button>
-      </div>
-    </div>
-  </form>
-  <% } %>
-  <h2>All the Nade Throws:</h2>
-  <ul class="list-unstyled row">
-    <% nadeThrows.forEach(nadeThrow => { %>
+
+<h2 class="mt-5">All the Nade Throws:</h2>
+
+<ul class="list-unstyled row justify-content-center mt-4">
+  <% nadeThrows.forEach(nadeThrow => { %>
     <li class="col-md-6 my-3">
       <div class="card border-secondary h-100">
         <div class="card-body">
@@ -71,21 +16,103 @@
           <p class="card-text">Grenade Type: <%= nadeThrow.grenadeType %></p>
           <p class="card-text">Server Tick Rate: <%= nadeThrow.tickRate %></p>
           <div
-            class="ratio ratio-16x9 mb-3"
-            style="position: relative; overflow: hidden; background-color: #333"
+          class="mb-3"
+          style="position: relative; overflow: hidden; background-color: #333"
           >
-            <video src="<%= nadeThrow.gifLink %>" controls style=" width: auto;
-            height: 300px; " / >
+          <video
+          src="<%= nadeThrow.gifLink %>"
+          controls
+          style="width: 100%; height: auto"
+            ></video>
           </div>
-          <a
-            href="/nade-throws/<%= nadeThrow._id %>"
-            class="btn btn-outline-secondary"
-            >View Details</a
-          >
+          <div class="text-center">
+            <a
+              href="/nade-throws/<%= nadeThrow._id %>"
+              class="btn btn-outline-secondary"
+              >View Details</a
+            >
+          </div>
         </div>
       </div>
     </li>
     <% }); %>
   </ul>
 </section>
+
+<section class="container mt-5">
+  <h1 class="text-center">Nade Throws! 💣💣💣</h1>
+
+  <% if (user ) { %>
+  <div class="row justify-content-center mt-4">
+    <div class="col-md-6">
+      <form action="/nade-throws" method="post">
+        <div class="form-group">
+          <label for="map">Map:</label>
+          <select name="map" id="map-select" class="form-control">
+            <option value="Anubis">Anubis</option>
+            <option value="Cache">Cache</option>
+            <option value="Cobblestone">Cobblestone</option>
+            <option value="Dust II">Dust II</option>
+            <option value="Inferno">Inferno</option>
+            <option value="Mirage">Mirage</option>
+            <option value="Nuke">Nuke</option>
+            <option value="Overpass">Overpass</option>
+            <option value="Train">Train</option>
+            <option value="Vertigo">Vertigo</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="gif-link">GIF Link:</label>
+          <input
+            type="text"
+            id="gif-link"
+            name="gifLink"
+            class="form-control"
+            placeholder="Paste Gif Link Here"
+          />
+        </div>
+        <div class="form-group">
+          <label for="location">Map Location:</label>
+          <input
+            type="text"
+            name="location"
+            id="location"
+            class="form-control"
+            placeholder="Map Callout Here"
+          />
+        </div>
+        <div class="form-group">
+          <label for="grenade-types">Grenade Type:</label>
+          <select name="grenadeType" id="grenade-types" class="form-control">
+            <option value="Smoke Grenade">Smoke Grenade</option>
+            <option value="Frag Grenade">Frag Grenade</option>
+            <option value="Flash Grenade">Flash Grenade</option>
+            <option value="Molotov/Incendiary Grenade">
+              Molotov/Incendiary Grenade
+            </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="tick-rate-select">Tick Rate:</label>
+          <select name="tickRate" id="tick-rate-select" class="form-control">
+            <option value="64">64</option>
+            <option value="128">128</option>
+          </select>
+        </div>
+        <div class="form-group form-check">
+          <input
+            type="checkbox"
+            name="jumpThrow"
+            id="jumpThrow"
+            class="form-check-input"
+          />
+          <label class="form-check-label" for="jumpThrow">Jump Throw?</label>
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary">Add 💣</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <% } %>
 <%- include('../partials/footer') %>
