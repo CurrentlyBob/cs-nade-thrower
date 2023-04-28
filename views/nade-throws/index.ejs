@@ -1,8 +1,8 @@
 <%- include('../partials/html-head') %> <%- include('../partials/nav') %>
 
 <% if (user ) { %>
-  <section class="container mt-5">
-    <h1 class="text-center">Nade Throws! 💣💣💣</h1>
+<section class="container mt-5">
+  <h1 class="text-center">Nade Throws! 💣💣💣</h1>
   <div class="row justify-content-center mt-4">
     <div class="col-md-6">
       <form action="/nade-throws" method="post">
@@ -23,25 +23,11 @@
         </div>
         <div class="form-group">
           <label for="gif-link">GIF Link:</label>
-          <input
-            type="text"
-            id="gif-link"
-            name="gifLink"
-            class="form-control"
-            autocomplete="off"
-            placeholder="Paste Gif Link Here"
-          />
+          <input type="text" id="gif-link" name="gifLink" class="form-control" autocomplete="off" placeholder="Paste Gif Link Here" />
         </div>
         <div class="form-group">
           <label for="location">Map Location:</label>
-          <input
-            type="text"
-            name="location"
-            id="location"
-            class="form-control"
-            autocomplete="off"
-            placeholder="Map Callout Here"
-          />
+          <input type="text" name="location" id="location" class="form-control" autocomplete="off" placeholder="Map Callout Here" />
         </div>
         <div class="form-group">
           <label for="grenade-types">Grenade Type:</label>
@@ -62,12 +48,7 @@
           </select>
         </div>
         <div class="form-group form-check">
-          <input
-            type="checkbox"
-            name="jumpThrow"
-            id="jumpThrow"
-            class="form-check-input"
-          />
+          <input type="checkbox" name="jumpThrow" id="jumpThrow" class="form-check-input" />
           <label class="form-check-label" for="jumpThrow">Jump Throw?</label>
         </div>
         <div class="text-center">
@@ -78,10 +59,10 @@
   </div>
   <% } %>
 
-<h2 class="mt-5">All the Nade Throws:</h2>
+  <h2 class="mt-5">All the Nade Throws:</h2>
 
-<ul class="list-unstyled row justify-content-center mt-4">
-  <% nadeThrows.forEach(nadeThrow => { %>
+  <ul class="list-unstyled row justify-content-center mt-4">
+    <% nadeThrows.forEach(nadeThrow => { %>
     <li class="col-md-6 my-3">
       <div class="card border-secondary h-100">
         <div class="card-body">
@@ -92,22 +73,11 @@
           <p class="card-text">Map Location: <%= nadeThrow.location %></p>
           <p class="card-text">Grenade Type: <%= nadeThrow.grenadeType %></p>
           <p class="card-text">Server Tick Rate: <%= nadeThrow.tickRate %></p>
-          <div
-          class="mb-3"
-          style="position: relative; overflow: hidden; background-color: #333"
-          >
-          <video
-          src="<%= nadeThrow.gifLink %>"
-          controls
-          style="width: 100%; height: auto"
-            ></video>
+          <div class="mb-3" style="position: relative; overflow: hidden; background-color: #333">
+            <video src="<%= nadeThrow.gifLink %>" controls style="width: 100%; height: auto"></video>
           </div>
           <div class="text-center">
-            <a
-              href="/nade-throws/<%= nadeThrow._id %>"
-              class="btn btn-outline-secondary"
-              >View Details</a
-            >
+            <a href="/nade-throws/<%= nadeThrow._id %>" class="btn btn-outline-secondary">View Details</a>
           </div>
         </div>
       </div>

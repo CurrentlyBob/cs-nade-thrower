@@ -1,15 +1,13 @@
-import { Router } from 'express'
+import { Router } from "express";
 
-const router = Router()
+const router = Router();
 
-router.get('/', function (req, res) {
+router.get("/", function (req, res) {
   if (req.user) {
-    res.redirect('/nade-throws')
+    res.redirect("/nade-throws");
   } else {
-  res.render('index', { title: 'Home Page' })
+    res.render("index", { title: "Home Page" });
   }
-})
+});
 
-export {
-  router
-}
+export { router };

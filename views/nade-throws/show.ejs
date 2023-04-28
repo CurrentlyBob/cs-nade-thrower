@@ -1,25 +1,22 @@
-<%- include('../partials/html-head') %> 
+<%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
 
 <section class="container mt-5">
   <div class="row">
     <div class="col-12">
       <p>Nade Throw Posted By <%= nadeThrow.creator.name %></p>
-      <img src="<%= nadeThrow.creator.avatar %>" alt="<%= nadeThrow.creator.name %>'s avatar" class="img-thumbnail"/>
+      <img src="<%= nadeThrow.creator.avatar %>" alt="<%= nadeThrow.creator.name %>'s avatar" class="img-thumbnail" />
       <h1><%= nadeThrow.map %> Nade Throw💣💣💣</h1>
       <h2>
         This nade throw is a <%= nadeThrow.jumpThrow ? 'Jump Throw' : 'Standard Throw' %>
       </h2>
       <h3 class="card-text">Map Location: <%= nadeThrow.location %></h3>
-          <h3 class="card-text">Grenade Type: <%= nadeThrow.grenadeType %></h3>
-          <h3 class="card-text">Server Tick Rate: <%= nadeThrow.tickRate %></h3>
-          <div
-          class="ratio ratio-16x9 mb-3"
-          style="position: relative; overflow: hidden;"
-        >
-          <video src="<%= nadeThrow.gifLink %>" controls style=" width: auto;
-          height: 300px; " / >
-        </div>
+      <h3 class="card-text">Grenade Type: <%= nadeThrow.grenadeType %></h3>
+      <h3 class="card-text">Server Tick Rate: <%= nadeThrow.tickRate %></h3>
+      <div class="ratio ratio-16x9 mb-3" style="position: relative; overflow: hidden;">
+        <video src="<%= nadeThrow.gifLink %>" controls style=" width: auto;
+          height: 300px; " />
+      </div>
       <% if(user) { %>
       <% } %> <% if (nadeThrow.creator.equals(user?.profile._id)) { %>
       <a href="/nade-throws/<%= nadeThrow._id %>/edit">
@@ -34,17 +31,17 @@
       <h3>Add a Comment</h3>
       <ul class="list-unstyled">
         <% nadeThrow.comments?.forEach(comment => { %>
-          <li>
-            <%= comment.content %> - <%= comment.author.name %>
-            <% if (comment.author.equals(user?.profile._id)) { %>
-              <form action="/nade-throws/<%= nadeThrow._id %>/comments/<%= comment._id %>?_method=DELETE" method="post" class="d-inline">
-                <button class="btn btn-sm btn-danger" type="submit">Delete Comment</button>
-              </form>
-              <a href="/nade-throws/<%= nadeThrow._id %>/comments/<%= comment._id  %>/edit">
-                <button class="btn btn-sm btn-warning">Edit Comment</button>
-              </a>
-            <% } %>
-          </li> 
+        <li>
+          <%= comment.content %> - <%= comment.author.name %>
+          <% if (comment.author.equals(user?.profile._id)) { %>
+          <form action="/nade-throws/<%= nadeThrow._id %>/comments/<%= comment._id %>?_method=DELETE" method="post" class="d-inline">
+            <button class="btn btn-sm btn-danger" type="submit">Delete Comment</button>
+          </form>
+          <a href="/nade-throws/<%= nadeThrow._id %>/comments/<%= comment._id  %>/edit">
+            <button class="btn btn-sm btn-warning">Edit Comment</button>
+          </a>
+          <% } %>
+        </li>
         <% }) %>
       </ul>
       <form action="/nade-throws/<%= nadeThrow._id %>/Comments" method="POST">

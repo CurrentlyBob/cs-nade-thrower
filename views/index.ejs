@@ -6,19 +6,10 @@
       <h1 class="mb-4">Hello, <%= user ? user.profile.name : "player." %></h1>
       <% if (user?.profile.avatar) { %>
       <div>
-        <img
-          src="<%= user.profile.avatar %>"
-          alt="<%= user.profile.name %> avatar"
-          class="img-fluid rounded-circle"
-        />
+        <img src="<%= user.profile.avatar %>" alt="<%= user.profile.name %> avatar" class="img-fluid rounded-circle" />
       </div>
       <% } else { %>
-      <video
-        src="https://thumbs.gfycat.com/UntidyMemorableBangeltiger-mobile.mp4"
-        autoplay 
-        loop
-        style="width: auto; height: auto"
-      ></video>
+      <video src="https://thumbs.gfycat.com/UntidyMemorableBangeltiger-mobile.mp4" autoplay loop style="width: auto; height: auto"></video>
       <% } %>
     </div>
   </div>
